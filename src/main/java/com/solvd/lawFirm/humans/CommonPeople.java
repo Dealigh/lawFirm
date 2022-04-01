@@ -1,4 +1,4 @@
-package com.solvd.lawFirm.Humans;
+package com.solvd.lawFirm.humans;
 
 public class CommonPeople extends Human {
 	private int MoneyInPocket = 55000;

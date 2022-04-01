@@ -3,11 +3,12 @@ package com.solvd.lawFirm;
 import java.util.*;
 
 
-import com.solvd.lawFirm.Humans.Client;
-import com.solvd.lawFirm.Humans.CommonPeople;
-import com.solvd.lawFirm.Humans.Judge;
-import com.solvd.lawFirm.Humans.Prosecutor;
+import com.solvd.lawFirm.humans.Client;
+import com.solvd.lawFirm.humans.CommonPeople;
+import com.solvd.lawFirm.humans.Judge;
+import com.solvd.lawFirm.humans.Prosecutor;
 import com.solvd.lawFirm.trials.*;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -157,7 +158,7 @@ public class Consult {
         if (finalResolution == false) {
             System.out.println("We can try to appeal this Trial to an upper court, which can see if the final resolution was fair or not");
             System.out.println("Electing new Judges...");
-            ArrayList<Judge> listNewJudges = new ArrayList<Judge>();
+            ArrayList<Judge> listNewJudges = new ArrayList<>();
             for (int i = 0; i < ((int) (Math.random() * 5) + 2); i++) {
                 listNewJudges.add(new Judge(res.setJudgeName(), res.setJudgeAge(), res.setBoolean(), res.setBoolean()));
             }

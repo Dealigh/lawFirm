@@ -1,6 +1,6 @@
 package com.solvd.lawFirm.trials;
 
-import com.solvd.lawFirm.Humans.Judge;
+import com.solvd.lawFirm.humans.Judge;
 
 public abstract class Procedure {
 
