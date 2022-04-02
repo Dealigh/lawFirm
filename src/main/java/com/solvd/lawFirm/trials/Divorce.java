@@ -1,9 +1,9 @@
 package com.solvd.lawFirm.trials;
 
-import com.solvd.lawFirm.laws.LawDivorce;
-import com.solvd.lawFirm.laws.Money;
+import com.solvd.lawFirm.laws.iLawDivorce;
+import com.solvd.lawFirm.laws.IMoney;
 
-public class Divorce extends Procedure implements LawDivorce, Money {
+public class Divorce extends Procedure implements iLawDivorce, IMoney {
 	
 	public Divorce(String part1, String part2) {
 		super(part1, part2, priceProcedure);

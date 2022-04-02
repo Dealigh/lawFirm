@@ -1,6 +1,6 @@
 package com.solvd.lawFirm.laws;
 
-public interface LawCriminal {
+public interface iLawCriminal {
 	
 	public int priceProcedure = 0;
 	public String setBehindBars();

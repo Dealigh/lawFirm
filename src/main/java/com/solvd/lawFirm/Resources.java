@@ -1,5 +1,6 @@
 package com.solvd.lawFirm;
 
+import com.solvd.lawFirm.exceptions.AgeException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,6 +13,7 @@ public class Resources {
     Scanner sc = new Scanner(System.in);
     Scanner Sc = new Scanner(System.in);
     private String temporalStore;
+    private int age;
 
     public static <T, V> void getJudgeProsecutor(T Judge, V Prosecutor) {
         System.out.println("The judge will be: " + Judge);
@@ -24,9 +26,22 @@ public class Resources {
 
     public int readInt() {
         try {
-            return sc.nextInt();
+            age = sc.nextInt();
+            checkAge(age);
+            return age;
         } catch (InputMismatchException e) {
             throw new InputMismatchException("Not an INT value");
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    static void checkAge(int age) throws AgeException {
+        if(age<18) {
+            throw new AgeException("\n" + "You must be 18+ to start a trial");
+        }
+        else {
+            System.out.println("checking age...");
         }
     }
 

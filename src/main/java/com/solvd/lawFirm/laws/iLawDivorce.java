@@ -2,7 +2,7 @@ package com.solvd.lawFirm.laws;
 
 
 
-public interface LawDivorce {
+public interface iLawDivorce {
 	
 	public int priceProcedure = 12000;
 	

@@ -1,6 +1,6 @@
 package com.solvd.lawFirm.laws;
 
-public interface Money {
+public interface IMoney {
 
 	public int priceConsult = 1000;
 	
