@@ -6,10 +6,8 @@ public abstract class Procedure {
 
 	private int priceProcedure;
 	private String part1, part2;
-	private Judge judge;
 	
-
-	private int timeSpent = 12;
+	private int timeSpent = 364;
 
 	public Procedure(String part1, String part2, int price) {
 		this.part1 = part1;
@@ -33,13 +31,7 @@ public abstract class Procedure {
 
 	public abstract int getPriceProcedure();
 
-	public void setTrialJudge(Judge Judges) {
-		this.judge = Judges;
-	}
-
-	public String getJudge() {
-		return "We got the Judge: " + judge;
-	}
+	public static String getJudge() {return "The name of the judge is: ";}
 	
 	public abstract String setResolution(boolean Decition);
 

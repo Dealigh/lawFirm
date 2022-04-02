@@ -1,6 +1,7 @@
 package com.solvd.lawFirm;
 
 import com.solvd.lawFirm.exceptions.AgeException;
+import com.solvd.lawFirm.exceptions.NameException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,36 +25,38 @@ public class Resources {
         return "This court has " + a.length + " judges";
     }
 
-    public int readInt() {
+    public int readInt()throws AgeException{
         try {
             age = sc.nextInt();
             checkAge(age);
-            return age;
+
         } catch (InputMismatchException e) {
             throw new InputMismatchException("Not an INT value");
-        } catch (Exception e) {
-            return 0;
+        } catch (AgeException e) {
+            throw new AgeException("Error. Can't initialize a trial with less than 18 years old");
         }
+        return age;
     }
 
     static void checkAge(int age) throws AgeException {
         if(age<18) {
             throw new AgeException("\n" + "You must be 18+ to start a trial");
         }
-        else {
-            System.out.println("checking age...");
-        }
     }
 
-    public String setPartName() {
+    public String setPartName() throws NameException {
         temporalStore = Sc.nextLine();
-        if (!temporalStore.matches("^[a-zA-Z]+$")) {
-            LOGG.warn("Name not valid. Non-alphabetic characters and numbers NOT allowed");
-            System.exit(0);
-        }
+        checkName();
         return temporalStore;
     }
 
+    public void checkName() throws NameException{
+
+        if (!temporalStore.matches("^[a-zA-Z]+$")) {
+            throw new NameException("Name not valid. Non-alphabetic characters and numbers NOT allowed" + temporalStore);
+        }
+
+    }
     public String setJudgeName() {
         if ((int) (Math.random() * 100) >= 90) {
             return "Carlos Fernandez";
@@ -90,7 +93,6 @@ public class Resources {
 
     public boolean setDecition(boolean efficient, boolean belivesInJustice) {
         if (efficient == true && belivesInJustice == true) {
-
             return true;
         } else if (efficient == false && belivesInJustice == false) {
             return false;
@@ -104,12 +106,12 @@ public class Resources {
     }
 
     public String menuOptions() {
-        System.out.println("Please press the number if you are here for: ");
-        System.out.println("1- A divorce");
-        System.out.println("2- A Labor Lawsuit");
-        System.out.println("3- A Problem with Neighbours");
-        System.out.println("4- A Trade");
-        System.out.println("5- A Criminal Offence");
+        LOGG.info("Please press the number if you are here for: ");
+        LOGG.info("1- A divorce");
+        LOGG.info("2- A Labor Lawsuit");
+        LOGG.info("3- A Problem with Neighbours");
+        LOGG.info("4- A Trade");
+        LOGG.info("5- A Criminal Offence");
         return "";
     }
 }
