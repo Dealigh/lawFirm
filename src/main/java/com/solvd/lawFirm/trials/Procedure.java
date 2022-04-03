@@ -7,7 +7,7 @@ public abstract class Procedure {
 	private int priceProcedure;
 	private String part1, part2;
 	
-	private int timeSpent = 364;
+	private int timeSpent = 768;
 
 	public Procedure(String part1, String part2, int price) {
 		this.part1 = part1;
@@ -15,16 +15,17 @@ public abstract class Procedure {
 		this.priceProcedure = price;
 	}
 
-	public void setTimeSpent(int months) {
-		timeSpent += months;
+	public void setTimeSpent(int days) {
+		timeSpent = timeSpent + days;
 	}
 
-	public String getTimeSpent() {
-		return "Usually, a procedure take almost " + timeSpent + " months";
-	}
+	public int getTimeSpent() { return timeSpent;}
 
 	public String getExplanation() {
-		return "Every trial has two parts confront with eachother and a Judge, that has to make a decisition.";
+		return "Every trial has two parts confront with each other and a Judge, that has to make a decisition.";
+	}
+	public String timeDescription() {
+		return "This Trial usually takes: ";
 	}
 
 	public abstract String getDetailedExplanation();

@@ -53,15 +53,20 @@ public class Consult {
         LOGGER.info("Can you tell me your age?");
         client.setAge(res.readInt());
 
-        getMoreDays(10);
+        int evolvingDate = 10;
+        LOGGER.info(getMoreDays(evolvingDate));
         Judge designedJudge = new Judge(res.setJudgeName(), res.setJudgeAge(), res.setBoolean(), res.setBoolean());
         res.menuOptions();
 
         switch (sc.nextInt()) {
             case 1:
                 Divorce trial = new Divorce(client.getName(), secondPart.getName());
+                evolvingDate = 20;
+                LOGGER.info(getMoreDays(evolvingDate));
                 LOGGER.info(trial.getDetailedExplanation());
+                LOGGER.info(trial.timeDescription() + trial.getDivorceTimeSpent());
                 LOGGER.info("The number of your proceedings will be: " + res.setProceedings(designedJudge.getAge(), trial.getPriceProcedure()));
+
 
                 LOGGER.info(trial.getJudge() + designedJudge.getName());
 
@@ -70,6 +75,10 @@ public class Consult {
                 LOGGER.info(client.getMoneyOwned());
 
                 finalResolution = res.setDecition(designedJudge.getEfficient(), designedJudge.getJustice());
+
+                evolvingDate += trial.getDivorceTimeSpent();
+                LOGGER.debug(getMoreDays(evolvingDate));
+
                 LOGGER.debug(trial.setResolution(finalResolution));
                 LOGGER.info(trial.getDivideItems());
                 break;
@@ -159,6 +168,7 @@ public class Consult {
                 break;
         }
 
+        LOGGER.info(getMoreDays(evolvingDate + 30));
         if (finalResolution == false) {
             LOGGER.info("We can try to appeal this Trial to an upper court, which can see if the final resolution was fair or not");
             LOGGER.info("Electing new Judges...");

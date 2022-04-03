@@ -20,13 +20,15 @@ public class Divorce extends Procedure implements iLawDivorce, IMoney {
 	public String getDivideItems() {
 		return "All the marriage items will be divided between the wife and the husband." ;
 	}
-	
 
+	public int getDivorceTimeSpent() {
+		return getTimeSpent() + divorceTimeSpent;
+	}
 
 
 	public String setResolution(boolean decition) {
 		System.out.println("The resolution is that with the sign of this paper, you two are no longer a marriage.");
-		if(decition == true) {
+		if(decition) {
 			return "You won the Trial, You will take care of your children";
 		} else {
 			return "You lost the Trial, The mother will take care of the childrens";
@@ -39,6 +41,6 @@ public class Divorce extends Procedure implements iLawDivorce, IMoney {
 	}
 	
 	public int setPriceTotal() {
-		return 1000 + 12000;
+		return 1000 + priceProcedure;
 	}
 }
