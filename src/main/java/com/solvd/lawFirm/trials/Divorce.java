@@ -14,7 +14,7 @@ public class Divorce extends Procedure implements iLawDivorce, IMoney {
 	}
 
 	public int getPriceProcedure() {
-		return 12000;
+		return 1000 + priceProcedure;
 	}
 
 	public String getDivideItems() {
@@ -35,12 +35,7 @@ public class Divorce extends Procedure implements iLawDivorce, IMoney {
 		}
 	}
 
-	
 	public String getPriceConsult() {
 		return "The price of the consult is " + priceConsult + "and the cost of the trial is " + priceProcedure;
-	}
-	
-	public int setPriceTotal() {
-		return 1000 + priceProcedure;
 	}
 }

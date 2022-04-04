@@ -67,11 +67,3 @@ public class Time {
     public static int month = calendar.get(Calendar.MONTH);
 
 }
-
-/*
-    Date year = calen.getTime();
-    int anio = calen.get(Calendar.YEAR);
-    int month = calen.get(Calendar.MONTH) + 1;
-    int day = calen.get(Calendar.DAY_OF_MONTH);
-    int daySt = calen.get(Calendar.DAY_OF_WEEK);
-    */

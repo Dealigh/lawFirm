@@ -6,10 +6,7 @@ import java.util.*;
 import com.solvd.lawFirm.exceptions.AgeException;
 import com.solvd.lawFirm.exceptions.DateException;
 import com.solvd.lawFirm.exceptions.NameException;
-import com.solvd.lawFirm.humans.Client;
-import com.solvd.lawFirm.humans.CommonPeople;
-import com.solvd.lawFirm.humans.Judge;
-import com.solvd.lawFirm.humans.Prosecutor;
+import com.solvd.lawFirm.person.*;
 import com.solvd.lawFirm.trials.*;
 import org.apache.commons.lang3.StringUtils;
 
@@ -35,9 +32,16 @@ public class Consult {
         LOGGER.info("Now tell me your Lastname");
         client.setName(StringUtils.SPACE + res.setPartName());
 
+        LOGGER.info("In which country do you live in?");
+        Country country = new Country("note yet", 0, false);
+        country= (Country)country.getCountry(StringUtils.deleteWhitespace(Sc.nextLine().toUpperCase()));
+
         LOGGER.info("Now please introduce the name of the name of the person you have problem with");
         CommonPeople secondPart = new CommonPeople(res.setPartName());
 
+        LOGGER.info("And where does he or she lives");
+        country = (Country)country.setCourtCountry(StringUtils.deleteWhitespace(Sc.nextLine().toUpperCase()), StringUtils.deleteWhitespace(country.getName().toUpperCase()));
+        System.out.println(country.getName());
 
         Set<CommonPeople> newAccused = new HashSet<>();
         LOGGER.info("Do you want to accuse more people? Type Yes if so");
@@ -184,9 +188,8 @@ public class Consult {
             }
             listNewJudges.trimToSize();
 
-            Iterator<Judge> iteratorJudge = listNewJudges.iterator();
-            while (iteratorJudge.hasNext()) {
-                System.out.println("We got the Judge: " + iteratorJudge.next().getName());
+            for (Judge listNewJudge : listNewJudges) {
+                LOGGER.info("We got the Judge: " + listNewJudge.getName());
             }
             LOGGER.info(res.getCourtJudge(listNewJudges.toArray()));
 

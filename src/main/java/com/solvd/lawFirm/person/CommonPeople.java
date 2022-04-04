@@ -1,6 +1,6 @@
-package com.solvd.lawFirm.humans;
+package com.solvd.lawFirm.person;
 
-public class CommonPeople extends Human {
+public class CommonPeople extends Person {
 	private int MoneyInPocket = 55000;
 
 

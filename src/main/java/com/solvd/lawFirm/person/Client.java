@@ -1,6 +1,6 @@
-package com.solvd.lawFirm.humans;
+package com.solvd.lawFirm.person;
 
-public class Client extends Human {
+public class Client extends Person {
 	private int moneyOwned = 45000;
 
 	public Client(String nombre) {

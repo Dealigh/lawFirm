@@ -20,7 +20,7 @@ public class Resources {
         LOGG.info("The prosecutor will be: " + Prosecutor);
     }
 
-    public static <T> String getCourtJudge(T[]a) {
+    public <T> String getCourtJudge(T[]a) {
         return "This court has " + a.length + " judges";
     }
 

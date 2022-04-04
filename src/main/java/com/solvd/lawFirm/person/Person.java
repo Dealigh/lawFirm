@@ -1,12 +1,12 @@
-package com.solvd.lawFirm.humans;
+package com.solvd.lawFirm.person;
 
-abstract class Human{
+abstract class Person {
 
 	private int age;
 	private String name;
 	private boolean efficent;
 
-	public Human(String name, int edad, boolean efficient) {
+	public Person(String name, int edad, boolean efficient) {
 		this.name = name;
 		this.age = edad;
 		this.efficent = efficient;

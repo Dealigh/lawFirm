@@ -1,6 +1,6 @@
-package com.solvd.lawFirm.humans;
+package com.solvd.lawFirm.person;
 
-public class Arbiter extends Human {
+public class Arbiter extends Person {
 
 	public Arbiter(String nombre, int edad, boolean efficent) {
 		super(nombre, edad, efficent);

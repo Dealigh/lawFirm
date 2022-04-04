@@ -1,6 +1,6 @@
-package com.solvd.lawFirm.humans;
+package com.solvd.lawFirm.person;
 
-public class Judge extends Human {
+public class Judge extends Person {
 
     private boolean belivesinJustice;
 

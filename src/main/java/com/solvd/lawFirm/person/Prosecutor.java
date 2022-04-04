@@ -1,6 +1,6 @@
-package com.solvd.lawFirm.humans;
+package com.solvd.lawFirm.person;
 
-public class Prosecutor extends Human {
+public class Prosecutor extends Person {
     private boolean belivesinJustice = true;
 
     public Prosecutor(String nombre, int edad, boolean efficent) {

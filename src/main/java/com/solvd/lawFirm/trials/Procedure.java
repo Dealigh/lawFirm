@@ -1,7 +1,5 @@
 package com.solvd.lawFirm.trials;
 
-import com.solvd.lawFirm.humans.Judge;
-
 public abstract class Procedure {
 
 	private int priceProcedure;
@@ -21,9 +19,6 @@ public abstract class Procedure {
 
 	public int getTimeSpent() { return timeSpent;}
 
-	public String getExplanation() {
-		return "Every trial has two parts confront with each other and a Judge, that has to make a decisition.";
-	}
 	public String timeDescription() {
 		return "This Trial usually takes: ";
 	}
