@@ -1,5 +1,7 @@
 package com.solvd.lawFirm;
 
+import com.solvd.lawFirm.exceptions.DateException;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,6 +48,16 @@ public class Time {
                 return "Saturday";
             default:
                 return "";
+        }
+    }
+
+    public static Date stringToDate(String date) throws DateException {
+        Date userDate = null;
+        try {
+            userDate = sdf.parse(date);
+            return userDate;
+        } catch (Exception e) {
+            throw new DateException(e.getMessage());
         }
     }
 

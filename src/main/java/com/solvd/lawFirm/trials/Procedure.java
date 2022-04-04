@@ -32,7 +32,7 @@ public abstract class Procedure {
 
 	public abstract int getPriceProcedure();
 
-	public static String getJudge() {return "The name of the judge is: ";}
+	public String getJudge() {return "The name of the judge is: ";}
 	
 	public abstract String setResolution(boolean Decition);
 

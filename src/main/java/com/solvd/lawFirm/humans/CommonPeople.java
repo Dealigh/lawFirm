@@ -16,4 +16,8 @@ public class CommonPeople extends Human {
 	public void setEmbargo() {
 		MoneyInPocket -= 20000;
 	}
+
+	public int getMoneyInPocket() {
+		return this.MoneyInPocket;
+	}
 }

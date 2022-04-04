@@ -2,21 +2,21 @@ package com.solvd.lawFirm.humans;
 
 abstract class Human{
 
-	private int Age;
+	private int age;
 	private String name;
 	private boolean efficent;
 
-	public Human(String nombre, int edad, boolean efficient) {
-		this.name = nombre;
-		this.Age = edad;
+	public Human(String name, int edad, boolean efficient) {
+		this.name = name;
+		this.age = edad;
 		this.efficent = efficient;
 	}
 
 	public void setAge(int age){
-		this.Age = age;
+		this.age = age;
 	}
 	public int getAge(){
-		return this.Age;
+		return this.age;
 	}
 
 	public abstract String getProfession();
@@ -28,5 +28,7 @@ abstract class Human{
 	public boolean getEfficient() {
 		return this.efficent;
 	}
+
+	public void setName(String name) {this.name += name;}
 
 }

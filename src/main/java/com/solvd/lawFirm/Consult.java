@@ -4,22 +4,24 @@ import java.util.*;
 
 
 import com.solvd.lawFirm.exceptions.AgeException;
+import com.solvd.lawFirm.exceptions.DateException;
 import com.solvd.lawFirm.exceptions.NameException;
 import com.solvd.lawFirm.humans.Client;
 import com.solvd.lawFirm.humans.CommonPeople;
 import com.solvd.lawFirm.humans.Judge;
 import com.solvd.lawFirm.humans.Prosecutor;
 import com.solvd.lawFirm.trials.*;
-import static com.solvd.lawFirm.Time.getDate;
-import static com.solvd.lawFirm.Time.getMoreDays;
+import org.apache.commons.lang3.StringUtils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static com.solvd.lawFirm.Time.*;
+
 public class Consult {
     private static final Logger LOGGER = LogManager.getLogger(Consult.class);
 
-    public static void main(String[] args) throws NameException, AgeException {
+    public static void main(String[] args) throws NameException, AgeException, DateException {
 
         boolean finalResolution = false;
         LOGGER.info(getDate());
@@ -29,14 +31,15 @@ public class Consult {
         Scanner Sc = new Scanner(System.in);
 
         LOGGER.info("Welcome to Goldbach lawsuit, please insert your name");
-
         Client client = new Client(res.setPartName());
+        LOGGER.info("Now tell me your Lastname");
+        client.setName(StringUtils.SPACE + res.setPartName());
 
         LOGGER.info("Now please introduce the name of the name of the person you have problem with");
         CommonPeople secondPart = new CommonPeople(res.setPartName());
 
-        Set<CommonPeople> newAccused = new HashSet<>();
 
+        Set<CommonPeople> newAccused = new HashSet<>();
         LOGGER.info("Do you want to accuse more people? Type Yes if so");
         if (Sc.nextLine().equalsIgnoreCase("yes")) {
             LOGGER.info("How many more (maximum is 10)");
@@ -67,6 +70,8 @@ public class Consult {
                 LOGGER.info(trial.timeDescription() + trial.getDivorceTimeSpent());
                 LOGGER.info("The number of your proceedings will be: " + res.setProceedings(designedJudge.getAge(), trial.getPriceProcedure()));
 
+                LOGGER.info("Since when you two are married? Please introduce a date in format dd/MM/yyyy");
+                stringToDate(Sc.nextLine());
 
                 LOGGER.info(trial.getJudge() + designedJudge.getName());
 
@@ -167,6 +172,7 @@ public class Consult {
                 System.exit(0);
                 break;
         }
+
 
         LOGGER.info(getMoreDays(evolvingDate + 30));
         if (finalResolution == false) {

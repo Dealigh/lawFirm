@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.lang.Math;
 
 public class Resources {
     private static final Logger LOGG = LogManager.getLogger(Resources.class);
@@ -16,9 +15,9 @@ public class Resources {
     private String temporalStore;
     private int age;
 
-    public static <T, V> void getJudgeProsecutor(T Judge, V Prosecutor) {
-        System.out.println("The judge will be: " + Judge);
-        System.out.println("The prosecutor will be: " + Prosecutor);
+    public <T, V> void getJudgeProsecutor(T Judge, V Prosecutor) {
+        LOGG.info("The judge will be: " + Judge);
+        LOGG.info("The prosecutor will be: " + Prosecutor);
     }
 
     public static <T> String getCourtJudge(T[]a) {
@@ -45,7 +44,7 @@ public class Resources {
     }
 
     public String setPartName() throws NameException {
-        temporalStore = Sc.nextLine();
+        temporalStore = Sc.nextLine().toUpperCase();
         checkName();
         return temporalStore;
     }
@@ -114,5 +113,6 @@ public class Resources {
         LOGG.info("5- A Criminal Offence");
         return "";
     }
+
 }
 
