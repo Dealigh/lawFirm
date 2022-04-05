@@ -33,15 +33,21 @@ public class Consult {
 
         LOGGER.info("In which country do you live in?");
         Country country = new Country("note yet", 0, false);
-        country= (Country)country.getCountry(StringUtils.deleteWhitespace(Sc.nextLine().toUpperCase()));
+        country = (Country) country.getCountry(StringUtils.deleteWhitespace(Sc.nextLine().toUpperCase()));
 
         LOGGER.info("Now please introduce the name of the name of the person you have problem with");
         CommonPeople secondPart = new CommonPeople(res.setPartName());
 
-        LOGGER.info("And where does he or she lives");
-        secondPart.setCountryOfResidence(Sc.nextLine());
-        country = (Country)country.setCourtCountry(StringUtils.deleteWhitespace(secondPart.getCountryOfResidence().toUpperCase()), StringUtils.deleteWhitespace(country.getName().toUpperCase()));
+        if (secondPart.getName().equalsIgnoreCase("ARGENTINA") || secondPart.getName().equalsIgnoreCase("BELARUS") ||
+                secondPart.getName().equalsIgnoreCase("UNITED STATES") || secondPart.getName().equalsIgnoreCase("SPAIN")) {
+            secondPart.setCountryOfResidence(secondPart.getName());
+            country = (Country) country.setCourtCountry(StringUtils.deleteWhitespace("THE HAGUE"), StringUtils.deleteWhitespace(country.getName().toUpperCase()));
 
+        } else {
+            LOGGER.info("And where does he or she lives");
+            secondPart.setCountryOfResidence(Sc.nextLine());
+            country = (Country) country.setCourtCountry(StringUtils.deleteWhitespace(secondPart.getCountryOfResidence().toUpperCase()), StringUtils.deleteWhitespace(country.getName().toUpperCase()));
+        }
 
         Set<CommonPeople> newAccused = new HashSet<>();
         LOGGER.info("Do you want to accuse more people? Type Yes if so");
@@ -58,8 +64,8 @@ public class Consult {
         }
 
         Lawyers lawyer = new Lawyers("Not yet", 20, false, "None");
-        lawyer = (Lawyers)lawyer.getLawyer();
-        LOGGER.error(lawyer.getName());
+        lawyer = (Lawyers) lawyer.getLawyer();
+        LOGGER.info(lawyer.getName());
         getCountryTrial(country.getName(), lawyer.getCountryLawyer());
 
 
@@ -108,6 +114,9 @@ public class Consult {
                 LOGGER.info(laborTrial.getPriceConsult());
                 client.setMoneyOwned(laborTrial.getPriceProcedure());
                 LOGGER.info(client.getMoneyOwned());
+
+                LOGGER.info(client.getMoneyOwned() + secondPart.getMoneyInPocket());
+                LOGGER.info(laborTrial.getEmbargoLabor());
 
                 finalResolution = res.setDecition(designedJudge.getEfficient(), designedJudge.getJustice());
                 LOGGER.debug(laborTrial.setResolution(finalResolution));
