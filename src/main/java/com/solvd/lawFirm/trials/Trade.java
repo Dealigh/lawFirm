@@ -1,10 +1,10 @@
 package com.solvd.lawFirm.trials;
 
 
-import com.solvd.lawFirm.laws.iLawCivil;
+import com.solvd.lawFirm.laws.ILawCivil;
 import com.solvd.lawFirm.laws.IMoney;
 
-public class Trade extends Procedure implements iLawCivil, IMoney {
+public class Trade extends Procedure implements ILawCivil, IMoney {
 
 
     public Trade(String part1, String part2) {

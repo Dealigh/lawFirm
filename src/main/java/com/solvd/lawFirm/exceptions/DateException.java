@@ -1,6 +1,6 @@
 package com.solvd.lawFirm.exceptions;
 
-public class DateException extends Exception{
+public class DateException extends RuntimeException{
 
     public DateException() {
         super();

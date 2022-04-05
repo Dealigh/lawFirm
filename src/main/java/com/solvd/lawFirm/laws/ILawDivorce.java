@@ -1,6 +1,6 @@
 package com.solvd.lawFirm.laws;
 
-public interface iLawDivorce {
+public interface ILawDivorce {
 
 	int divorceTimeSpent = 364;
 

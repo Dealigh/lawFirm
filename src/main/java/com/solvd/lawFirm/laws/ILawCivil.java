@@ -1,6 +1,6 @@
 package com.solvd.lawFirm.laws;
 
-public interface iLawCivil {
+public interface ILawCivil {
 	int priceProcedure = 17000;
 	
 	String getEmbargo();

@@ -1,8 +1,8 @@
 package com.solvd.lawFirm.trials;
 
-import com.solvd.lawFirm.laws.iLawCriminal;
+import com.solvd.lawFirm.laws.ILawCriminal;
 
-public class Criminal extends Procedure implements iLawCriminal {
+public class Criminal extends Procedure implements ILawCriminal {
 
     public Criminal(String part1, String part2) {
         super(part1, part2, 0);

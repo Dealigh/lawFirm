@@ -17,7 +17,7 @@ import static com.solvd.lawFirm.Time.*;
 public class Consult {
     private static final Logger LOGGER = LogManager.getLogger(Consult.class);
 
-    public static void main(String[] args) throws NameException, AgeException, DateException, InvalidSelection, LawyerCountryException {
+    public static void main(String[] args) {
 
         boolean finalResolution = false;
         LOGGER.info(getDate());

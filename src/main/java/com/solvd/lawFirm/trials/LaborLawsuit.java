@@ -1,9 +1,9 @@
 package com.solvd.lawFirm.trials;
 
-import com.solvd.lawFirm.laws.iLawLabor;
+import com.solvd.lawFirm.laws.ILawLabor;
 import com.solvd.lawFirm.laws.IMoney;
 
-public class LaborLawsuit extends Procedure implements iLawLabor, IMoney {
+public class LaborLawsuit extends Procedure implements ILawLabor, IMoney {
 
     public LaborLawsuit(String part1, String part2) {
         super(part1, part2, 20000);
