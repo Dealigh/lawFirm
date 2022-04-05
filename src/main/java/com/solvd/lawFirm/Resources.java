@@ -14,7 +14,7 @@ public class Resources {
     Scanner sc = new Scanner(System.in);
     Scanner Sc = new Scanner(System.in);
     private String temporalStore;
-    private int age;
+    private int ageCheck;
 
     public <T, V> void getJudgeProsecutor(T Judge, V Prosecutor) {
         LOGG.info("The judge will be: " + Judge);
@@ -27,15 +27,15 @@ public class Resources {
 
     public int readInt()throws AgeException{
         try {
-            age = sc.nextInt();
-            checkAge(age);
+            ageCheck = sc.nextInt();
+            checkAge(ageCheck);
 
         } catch (InputMismatchException e) {
             throw new InputMismatchException("Not an INT value");
         } catch (AgeException e) {
             throw new AgeException("Error. Can't initialize a trial with less than 18 years old");
         }
-        return age;
+        return ageCheck;
     }
 
     static void checkAge(int age) throws AgeException {

@@ -13,9 +13,6 @@ public abstract class Procedure {
 		this.priceProcedure = price;
 	}
 
-	public void setTimeSpent(int days) {
-		timeSpent = timeSpent + days;
-	}
 
 	public int getTimeSpent() { return timeSpent;}
 
@@ -30,12 +27,4 @@ public abstract class Procedure {
 	public String getJudge() {return "The name of the judge is: ";}
 	
 	public abstract String setResolution(boolean Decition);
-
-	public int setTotalPrice(int priceConsult, int priceProcedure) {
-		return priceConsult + priceProcedure;
-	}
-	
-	public int getTotalPrice() {
-		return priceProcedure;
-	}
 }

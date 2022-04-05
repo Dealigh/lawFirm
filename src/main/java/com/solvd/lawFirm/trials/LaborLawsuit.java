@@ -33,10 +33,4 @@ public class LaborLawsuit extends Procedure implements iLawLabor, IMoney {
         return "We just made an Embargo over his goods, he cant sell anything and judge has at disposal $20000 to secure.";
     }
 
-
-    public String getMoneyOwned() {
-        return "This Person has money and goods at disposal: ";
-    }
-
-
 }

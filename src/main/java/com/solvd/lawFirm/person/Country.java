@@ -8,7 +8,6 @@ import org.apache.logging.log4j.Logger;
 public class Country extends Person {
 
     private static final Logger LOGGER = LogManager.getLogger(Consult.class);
-    private int age = 250;
 
     public Country(String name, int age, boolean efficient) {
         super(name, age, efficient);
