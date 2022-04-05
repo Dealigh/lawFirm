@@ -11,7 +11,7 @@ public class Time {
 
     public static Calendar calendar = new GregorianCalendar();
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd, MMM yyyy");
-
+    public static SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
 
     public static Date actualDate = new Date();
     public static final String todayDate = dateToString(actualDate);
@@ -52,9 +52,9 @@ public class Time {
     }
 
     public static Date stringToDate(String date) throws DateException {
-        Date userDate = null;
+
         try {
-            userDate = sdf.parse(date);
+            Date userDate = sdf2.parse(date);
             return userDate;
         } catch (Exception e) {
             throw new DateException(e.getMessage());

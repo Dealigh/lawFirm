@@ -49,7 +49,7 @@ public class Country extends Person{
                 return getCountry(clientCountry);
             } else {
                 LOGGER.info("You are not from the same country, so this trial will take Place on The Hague, the international court");
-                return getCountry("THEHAGUE");
+                return getCountry(secondPartCountry);
             }
     }
 }

@@ -3,9 +3,7 @@ package com.solvd.lawFirm;
 import java.util.*;
 
 
-import com.solvd.lawFirm.exceptions.AgeException;
-import com.solvd.lawFirm.exceptions.DateException;
-import com.solvd.lawFirm.exceptions.NameException;
+import com.solvd.lawFirm.exceptions.*;
 import com.solvd.lawFirm.person.*;
 import com.solvd.lawFirm.trials.*;
 import org.apache.commons.lang3.StringUtils;
@@ -13,12 +11,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static com.solvd.lawFirm.Resources.getCountryTrial;
 import static com.solvd.lawFirm.Time.*;
 
 public class Consult {
     private static final Logger LOGGER = LogManager.getLogger(Consult.class);
 
-    public static void main(String[] args) throws NameException, AgeException, DateException {
+    public static void main(String[] args) throws NameException, AgeException, DateException, InvalidSelection, LawyerCountryException {
 
         boolean finalResolution = false;
         LOGGER.info(getDate());
@@ -40,8 +39,9 @@ public class Consult {
         CommonPeople secondPart = new CommonPeople(res.setPartName());
 
         LOGGER.info("And where does he or she lives");
-        country = (Country)country.setCourtCountry(StringUtils.deleteWhitespace(Sc.nextLine().toUpperCase()), StringUtils.deleteWhitespace(country.getName().toUpperCase()));
-        System.out.println(country.getName());
+        secondPart.setCountryOfResidence(Sc.nextLine());
+        country = (Country)country.setCourtCountry(StringUtils.deleteWhitespace(secondPart.getCountryOfResidence().toUpperCase()), StringUtils.deleteWhitespace(country.getName().toUpperCase()));
+
 
         Set<CommonPeople> newAccused = new HashSet<>();
         LOGGER.info("Do you want to accuse more people? Type Yes if so");
@@ -56,6 +56,12 @@ public class Consult {
                 LOGGER.info("Too much People");
             }
         }
+
+        Lawyers lawyer = new Lawyers("Not yet", 20, false, "None");
+        lawyer = (Lawyers)lawyer.getLawyer();
+        LOGGER.error(lawyer.getName());
+        getCountryTrial(country.getName(), lawyer.getCountryLawyer());
+
 
         LOGGER.info("Can you tell me your age?");
         client.setAge(res.readInt());
@@ -163,23 +169,28 @@ public class Consult {
 
                 CommonPeople arrayPeople[] = new CommonPeople[newAccused.size()];
                 newAccused.toArray(arrayPeople);
-                for (int i = 0; i < arrayPeople.length; i++) {
-                    System.out.print(arrayPeople[i].getName() + ", ");
+                for (CommonPeople arrayPerson : arrayPeople) {
+                    System.out.print(arrayPerson.getName() + ", ");
                 }
 
                 finalResolution = res.setDecition(designedJudge.getEfficient(), designedJudge.getJustice());
                 LOGGER.debug(criminal.setResolution(finalResolution));
                 break;
 
-            default:
-                LOGGER.info("Invalid Selection.");
-                System.exit(0);
+            case 6:
+                LOGGER.info("You want to get more information abaout" + secondPart.getName() + "Here's what we know so far:");
+                LOGGER.info(secondPart.getProfession() + "He/she is from" + secondPart.getCountryOfResidence());
+
+                LOGGER.info("We know that he/she has " + secondPart.getMoneyInPocket() + "at disposal if we want to set an Embargo");
                 break;
+
+            default:
+                throw new InvalidSelection();
         }
 
 
         LOGGER.info(getMoreDays(evolvingDate + 30));
-        if (finalResolution == false) {
+        if (!finalResolution) {
             LOGGER.info("We can try to appeal this Trial to an upper court, which can see if the final resolution was fair or not");
             LOGGER.info("Electing new Judges...");
             ArrayList<Judge> listNewJudges = new ArrayList<>();

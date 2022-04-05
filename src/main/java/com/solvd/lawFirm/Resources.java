@@ -1,6 +1,7 @@
 package com.solvd.lawFirm;
 
 import com.solvd.lawFirm.exceptions.AgeException;
+import com.solvd.lawFirm.exceptions.LawyerCountryException;
 import com.solvd.lawFirm.exceptions.NameException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -111,8 +112,16 @@ public class Resources {
         LOGG.info("3- A Problem with Neighbours");
         LOGG.info("4- A Trade");
         LOGG.info("5- A Criminal Offence");
+        LOGG.info("6- Get Information");
         return "";
     }
 
+    public static void getCountryTrial(String countryName, String countryLawyerNme) throws LawyerCountryException {
+            if(countryName.equals("The Hague")){
+                return;
+            } else if(!countryName.equals(countryLawyerNme)) {
+                throw new LawyerCountryException();
+            }
+    }
 }
 
