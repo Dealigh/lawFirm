@@ -17,4 +17,6 @@ public class Judge extends Person {
     public boolean getJustice() {
         return this.belivesinJustice;
     }
+
+    public String getRole() { return "He is the JUDGE"; };
 }

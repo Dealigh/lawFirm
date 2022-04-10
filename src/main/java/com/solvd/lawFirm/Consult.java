@@ -7,6 +7,7 @@ import com.solvd.lawFirm.exceptions.*;
 import com.solvd.lawFirm.person.*;
 import com.solvd.lawFirm.trials.*;
 import com.solvd.lawFirm.profession.*;
+import com.solvd.lawFirm.information.*;
 import org.apache.commons.lang3.StringUtils;
 
 import org.apache.logging.log4j.LogManager;
@@ -31,6 +32,7 @@ public class Consult {
         Client client = new Client(res.setPartName());
         LOGGER.info("Now tell me your Lastname");
         client.setName(StringUtils.SPACE + res.setPartName());
+        Part<Client> you = new Part<>(client);
 
         LOGGER.info("In which country do you live in?");
         Country country = new Country("note yet", 0, false);
@@ -191,12 +193,18 @@ public class Consult {
                 break;
 
             case 6:
-                LOGGER.info("You want to get more information about" + secondPart.getName() + "Here's what we know so far:");
-
-                LOGGER.info("You want to get more information abaout" + secondPart.getName() + "Here's what we know so far:");
-                LOGGER.info(secondPart.getProfession() + "He/she is from" + secondPart.getCountryOfResidence());
-
-                LOGGER.info("We know that he/she has " + secondPart.getMoneyInPocket() + "at disposal if we want to set an Embargo");
+                LOGGER.info("Do you want to know more about the accused. Put yes, if you don't write that or you write anything else we will tell" +
+                        "you about the Judge. We could also say what we know about you");
+                if(Sc.nextLine().equalsIgnoreCase("yes")) {
+                    LOGGER.info("You want to get more information about" + secondPart.getName() + "Here's what we know so far:");
+                    Part<CommonPeople> him = new Part<>(secondPart);
+                    LOGGER.info(him.toString());
+                    LOGGER.info("We know that he/she has " + secondPart.getMoneyInPocket() + "at disposal if we want to set an Embargo");
+                } else {
+                    LOGGER.info("You want to get more information about" + secondPart.getName() + "Here's what we know so far:");
+                    Part<Judge> him = new Part<>(designedJudge);
+                    LOGGER.info(him.toString());
+                }
                 break;
             default:
                 throw new InvalidSelection();

@@ -62,4 +62,6 @@ public class Country extends Person {
             return getCountry(secondPartCountry);
         }
     }
+
+    public String getRole() { return "This is a country."; };
 }

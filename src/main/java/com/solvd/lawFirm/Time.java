@@ -33,19 +33,26 @@ public class Time {
     public static String getNameDay(int daySt) {
         switch(daySt) {
             case 1:
-                return "Sunday";
+                DaysOfWeek day = DaysOfWeek.SUNDAY;
+                return day.toString();
             case 2:
-                return "Monday";
+                DaysOfWeek day1 = DaysOfWeek.MONDAY;
+                return day1.toString();
             case 3:
-                return "Tuesday";
+                DaysOfWeek day2 = DaysOfWeek.TUESDAY;
+                return day2.toString();
             case 4:
-                return "Wednesday";
+                DaysOfWeek day3 = DaysOfWeek.WEDNESDAY;
+                return day3.toString();
             case 5:
-                return "Thursday";
+                DaysOfWeek day4 = DaysOfWeek.THURSDAY;
+                return day4.toString();
             case 6:
-                return "Friday";
+                DaysOfWeek day5 = DaysOfWeek.FRIDAY;
+                return day5.toString();
             case 7:
-                return "Saturday";
+                DaysOfWeek day6 = DaysOfWeek.SATURDAY;
+                return day6.toString();
             default:
                 return "";
         }

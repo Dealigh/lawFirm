@@ -19,4 +19,6 @@ public class Client extends Person {
 	public String getMoneyOwned() {
 		return "We have taken money from your bank account. Now you have: " + moneyOwned;
 	}
+
+	public String getRole() { return "He is our CLIENT"; };
 }

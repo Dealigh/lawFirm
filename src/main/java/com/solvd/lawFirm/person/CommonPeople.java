@@ -28,4 +28,6 @@ public class CommonPeople extends Person {
     public void setCountryOfResidence(String Country) {
         this.countryOfResidence = Country;
     }
+
+    public String getRole() { return "He is the ACCUSED"; };
 }

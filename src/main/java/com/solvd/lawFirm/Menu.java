@@ -1,7 +1,7 @@
 package com.solvd.lawFirm;
 
 public enum Menu {
-    DIVROCE,
+    DIVORCE,
     LABOR_LAWSUIT,
     PROBLEM_WITH_NEIGHBOURS,
     TRADE,
