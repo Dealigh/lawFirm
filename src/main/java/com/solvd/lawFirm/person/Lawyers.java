@@ -12,8 +12,8 @@ public class Lawyers extends Person {
 	private static final Logger LOGGER = LogManager.getLogger(Consult.class);
 	Scanner Sc = new Scanner(System.in);
 
-	public Lawyers(String nom, int edad, boolean efficent, String countryLawyer) {
-		super(nom, edad, efficent);
+	public Lawyers(String nom, int age, boolean eficent, String countryLawyer) {
+		super(nom, age, eficent);
 		this.countryLawyer = countryLawyer;
 	}
 

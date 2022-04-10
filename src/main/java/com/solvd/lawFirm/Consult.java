@@ -211,9 +211,7 @@ public class Consult {
             }
             listNewJudges.trimToSize();
 
-            for (Judge listNewJudge : listNewJudges) {
-                LOGGER.info("We got the Judge: " + listNewJudge.getName());
-            }
+            listNewJudges.forEach((n)->LOGGER.info("We got the Judge: " + n.getName()));
             LOGGER.info(res.getCourtJudge(listNewJudges.toArray()));
 
             LOGGER.info("They are taking a look into this Trial...");

@@ -4,14 +4,13 @@ import com.solvd.lawFirm.exceptions.AgeException;
 import com.solvd.lawFirm.exceptions.LawyerCountryException;
 import com.solvd.lawFirm.exceptions.NameException;
 import com.solvd.lawFirm.trials.IPriceProcedure;
-import com.solvd.lawFirm.laws.IRandom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Resources implements IRandom {
+public class Resources{
     private static final Logger LOGG = LogManager.getLogger(Resources.class);
     Scanner sc = new Scanner(System.in);
     Scanner Sc = new Scanner(System.in);
@@ -130,10 +129,5 @@ public class Resources implements IRandom {
         return op.sumPrice(x, y);
     }
 
-
-    @Override
-    public int random() {
-        IRandom randomNumber = (int) (Math.random() * 100);
-    }
 }
 

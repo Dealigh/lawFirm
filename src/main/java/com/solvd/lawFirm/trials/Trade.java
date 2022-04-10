@@ -43,4 +43,5 @@ public class Trade extends Procedure implements ILawCivil, IMoney {
     public int getPriceConsult() {
         return priceConsult;
     }
+
 }

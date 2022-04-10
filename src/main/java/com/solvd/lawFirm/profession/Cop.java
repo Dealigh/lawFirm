@@ -1,18 +1,18 @@
 package com.solvd.lawFirm.profession;
 
 public class Cop{
-    private String definition = " is a Cop";
     private double salary;
 
     public Cop() {
-        this.salary = 25081.25;
+        this.salary = setSalaryLambda();
     }
 
     public double getSalary() {
         return salary;
     }
 
-    public String getDefinitionWork() {
-        return definition;
+    public double setSalaryLambda(){
+        ISalary getSalary = (s) -> 512.25 * s;
+        return getSalary.declareSalary(2.3);
     }
 }
