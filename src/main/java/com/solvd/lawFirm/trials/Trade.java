@@ -8,7 +8,7 @@ public class Trade extends Procedure implements ILawCivil, IMoney {
 
 
     public Trade(String part1, String part2) {
-        super(part1, part2, 20000);
+        super(part1, part2, priceProcedure);
     }
 
     public String getDetailedExplanation() {
@@ -17,7 +17,7 @@ public class Trade extends Procedure implements ILawCivil, IMoney {
     }
 
     public int getPriceProcedure() {
-        return 20000;
+        return priceProcedure;
     }
 
     public String setResolution(boolean decition) {

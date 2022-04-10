@@ -4,8 +4,8 @@ public class CommonPeople extends Person {
     private int moneyInPocket = 55000;
     private String countryOfResidence;
 
-    public CommonPeople(String nombre) {
-        super(nombre, 25, false);
+    public CommonPeople(String name) {
+        super(name, 25, false);
 
     }
 

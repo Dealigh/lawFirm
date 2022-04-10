@@ -3,6 +3,7 @@ package com.solvd.lawFirm;
 import com.solvd.lawFirm.exceptions.AgeException;
 import com.solvd.lawFirm.exceptions.LawyerCountryException;
 import com.solvd.lawFirm.exceptions.NameException;
+import com.solvd.lawFirm.profession.Jobs;
 import com.solvd.lawFirm.trials.IPriceProcedure;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -106,13 +107,11 @@ public class Resources{
     }
 
     public String menuOptions() {
+        Menu[] options = Menu.values();
         LOGG.info("Please press the number if you are here for: ");
-        LOGG.debug("1- A divorce");
-        LOGG.info("2- A Labor Lawsuit");
-        LOGG.warn("3- A Problem with Neighbours");
-        LOGG.error("4- A Trade");
-        LOGG.fatal("5- A Criminal Offence");
-        LOGG.debug("6- Get Information");
+        for (Menu o: options) {
+            LOGG.info((o.ordinal()+ 1) + ") "+ o.name().toUpperCase().replace("_", " "));
+        }
         return "";
     }
 

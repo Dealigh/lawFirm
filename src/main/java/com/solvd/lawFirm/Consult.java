@@ -34,7 +34,8 @@ public class Consult {
 
         LOGGER.info("In which country do you live in?");
         Country country = new Country("note yet", 0, false);
-        country = (Country) country.getCountry(StringUtils.deleteWhitespace(Sc.nextLine().toUpperCase()));
+        String temporalSave = country.getCountriesAvailable().replace("_", " ");
+        country = (Country) country.getCountry(StringUtils.deleteWhitespace(temporalSave));
 
         LOGGER.info("Now please introduce the name of the name of the person you have problem with");
         CommonPeople secondPart = new CommonPeople(res.setPartName());
@@ -48,7 +49,8 @@ public class Consult {
             LOGGER.info("And where does he or she lives");
             secondPart.setCountryOfResidence(Sc.nextLine());
             country = (Country) country.setCourtCountry(StringUtils.deleteWhitespace(secondPart.getCountryOfResidence().toUpperCase()), StringUtils.deleteWhitespace(country.getName().toUpperCase()));
-            LOGGER.info("Which one its his job. Select the numbber\n1- Cop \n2- Medic \n3- Teacher");
+            LOGGER.info("Which one its his job. Select between the following");
+            Profession jobs = new Profession();
         }
 
         Set<CommonPeople> newAccused = new HashSet<>();

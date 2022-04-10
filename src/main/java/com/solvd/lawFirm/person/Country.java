@@ -1,13 +1,17 @@
 package com.solvd.lawFirm.person;
 
 import com.solvd.lawFirm.Consult;
+import com.solvd.lawFirm.CountryName;
 import com.solvd.lawFirm.exceptions.NameException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Scanner;
+
 public class Country extends Person {
 
     private static final Logger LOGGER = LogManager.getLogger(Consult.class);
+    Scanner sc = new Scanner(System.in);
 
     public Country(String name, int age, boolean efficient) {
         super(name, age, efficient);
@@ -16,6 +20,15 @@ public class Country extends Person {
     @Override
     public String getProfession() {
         return "A country is, by definition, a fictional person. It has all the benefits and obligations that humans and companies does, by rule of law";
+    }
+
+    public String getCountriesAvailable() {
+        CountryName[] countries = CountryName.values();
+        LOGGER.info("Chose a country, if it doesn't appear on the list chose other");
+        for (CountryName c: countries) {
+            LOGGER.info((c.ordinal()+ 1) + ") "+ c.name().toUpperCase());
+        }
+        return countries[(sc.nextInt() - 1)].toString();
     }
 
     public Country getCountry(String countryName) throws NameException {
