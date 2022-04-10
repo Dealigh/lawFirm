@@ -4,6 +4,6 @@ public interface IMoney {
 
 	int priceConsult = 1000;
 	
-	String getPriceConsult();
+	int getPriceConsult();
 	
 }

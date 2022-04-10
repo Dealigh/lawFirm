@@ -6,7 +6,7 @@ import com.solvd.lawFirm.laws.IMoney;
 public class NeighboursProblems extends Procedure implements IMoney, ILawCivil {
 
 	public NeighboursProblems(String part1, String part2) {
-		super(part1, part2, 8000);
+		super(part1, part2, priceProcedure);
 	}
 
 	public String getDetailedExplanation() {
@@ -14,10 +14,6 @@ public class NeighboursProblems extends Procedure implements IMoney, ILawCivil {
 				+ " with legal relations that it comes with contracts";
 	}
 
-	public int getPriceProcedure() {
-		return 8000;
-	}
-	
 	public String getArbiter() {
 		return "This type of trial can ve resolved with an Arbiter. They do not have power to decide, but rather help people to overcome their problems and reach to an agreement";
 	}
@@ -34,11 +30,19 @@ public class NeighboursProblems extends Procedure implements IMoney, ILawCivil {
 		return "This Person has money at disposal: ";
 	}
 	
-	public String getPriceConsult() {
+	public String getDetailPriceConsult() {
 		return "The price of the consult is " + priceConsult + "and the cost of the trial is " + priceProcedure;
 	}
 
 	public String getEmbargo() {
 		return "We just made an Embargo over his goods, he cant sell anything and judge has at disposal $20000 to secure.";
+	}
+
+	public int getPriceProcedure() {
+		return priceProcedure;
+	}
+
+	public int getPriceConsult() {
+		return priceConsult;
 	}
 }

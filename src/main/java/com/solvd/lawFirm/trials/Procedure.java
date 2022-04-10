@@ -13,7 +13,6 @@ public abstract class Procedure {
 		this.priceProcedure = price;
 	}
 
-
 	public int getTimeSpent() { return timeSpent;}
 
 	public String timeDescription() {
@@ -21,8 +20,6 @@ public abstract class Procedure {
 	}
 
 	public abstract String getDetailedExplanation();
-
-	public abstract int getPriceProcedure();
 
 	public String getJudge() {return "The name of the judge is: ";}
 	

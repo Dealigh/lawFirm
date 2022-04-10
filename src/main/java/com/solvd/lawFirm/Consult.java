@@ -6,6 +6,7 @@ import java.util.*;
 import com.solvd.lawFirm.exceptions.*;
 import com.solvd.lawFirm.person.*;
 import com.solvd.lawFirm.trials.*;
+import com.solvd.lawFirm.profession.*;
 import org.apache.commons.lang3.StringUtils;
 
 import org.apache.logging.log4j.LogManager;
@@ -47,6 +48,7 @@ public class Consult {
             LOGGER.info("And where does he or she lives");
             secondPart.setCountryOfResidence(Sc.nextLine());
             country = (Country) country.setCourtCountry(StringUtils.deleteWhitespace(secondPart.getCountryOfResidence().toUpperCase()), StringUtils.deleteWhitespace(country.getName().toUpperCase()));
+            LOGGER.info("Which one its his job. Select the numbber\n1- Cop \n2- Medic \n3- Teacher");
         }
 
         Set<CommonPeople> newAccused = new HashSet<>();
@@ -91,8 +93,8 @@ public class Consult {
 
                 LOGGER.info(trial.getJudge() + designedJudge.getName());
 
-                LOGGER.info(trial.getPriceConsult());
-                client.setMoneyOwned(trial.getPriceProcedure());
+                LOGGER.info(trial.getDetailPriceConsult());
+                client.setMoneyOwned(res.getSumPrices(trial.getPriceConsult(), trial.getPriceProcedure()));
                 LOGGER.info(client.getMoneyOwned());
 
                 finalResolution = res.setDecition(designedJudge.getEfficient(), designedJudge.getJustice());
@@ -111,8 +113,8 @@ public class Consult {
 
                 LOGGER.info(laborTrial.getJudge() + designedJudge.getName());
 
-                LOGGER.info(laborTrial.getPriceConsult());
-                client.setMoneyOwned(laborTrial.getPriceProcedure());
+                LOGGER.info(laborTrial.getDetailPriceConsult());
+                client.setMoneyOwned(res.getSumPrices(laborTrial.getPriceConsult(), laborTrial.getPriceProcedure()));
                 LOGGER.info(client.getMoneyOwned());
 
                 LOGGER.info(client.getMoneyOwned() + secondPart.getMoneyInPocket());
@@ -128,8 +130,8 @@ public class Consult {
                 LOGGER.info(neighbours.getDetailedExplanation());
                 LOGGER.info(designedJudge.getName());
 
-                LOGGER.info(neighbours.getPriceConsult());
-                client.setMoneyOwned(neighbours.getPriceProcedure());
+                LOGGER.info(neighbours.getDetailPriceConsult());
+                client.setMoneyOwned(res.getSumPrices(neighbours.getPriceConsult(), neighbours.getPriceProcedure()));
                 LOGGER.info(client.getMoneyOwned());
 
                 finalResolution = res.setDecition(designedJudge.getEfficient(), designedJudge.getJustice());
@@ -143,7 +145,7 @@ public class Consult {
 
                 LOGGER.info(designedJudge.getName());
 
-                LOGGER.info(trade.getPriceConsult());
+                LOGGER.info(trade.getDetailPriceConsult());
                 client.setMoneyOwned(trade.getPriceProcedure());
                 LOGGER.info(client.getMoneyOwned());
 
@@ -179,7 +181,7 @@ public class Consult {
                 CommonPeople arrayPeople[] = new CommonPeople[newAccused.size()];
                 newAccused.toArray(arrayPeople);
                 for (CommonPeople arrayPerson : arrayPeople) {
-                    System.out.print(arrayPerson.getName() + ", ");
+                    LOGGER.info(arrayPerson.getName() + ", ");
                 }
 
                 finalResolution = res.setDecition(designedJudge.getEfficient(), designedJudge.getJustice());
@@ -187,12 +189,13 @@ public class Consult {
                 break;
 
             case 6:
+                LOGGER.info("You want to get more information about" + secondPart.getName() + "Here's what we know so far:");
+
                 LOGGER.info("You want to get more information abaout" + secondPart.getName() + "Here's what we know so far:");
                 LOGGER.info(secondPart.getProfession() + "He/she is from" + secondPart.getCountryOfResidence());
 
                 LOGGER.info("We know that he/she has " + secondPart.getMoneyInPocket() + "at disposal if we want to set an Embargo");
                 break;
-
             default:
                 throw new InvalidSelection();
         }

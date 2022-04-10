@@ -5,12 +5,7 @@ import com.solvd.lawFirm.laws.ILawCriminal;
 public class Criminal extends Procedure implements ILawCriminal {
 
     public Criminal(String part1, String part2) {
-        super(part1, part2, 0);
-    }
-
-    public int getPriceProcedure() {
-        return 0;
-
+        super(part1, part2, priceProcedure);
     }
 
     public String getDetailedExplanation() {
@@ -35,5 +30,13 @@ public class Criminal extends Procedure implements ILawCriminal {
 
     public String setBehindBars() {
         return " has been put in temporarily prison until find enough proofs to put him on trial or let him free";
+    }
+
+    public int getPriceProcedure() {
+        return priceProcedure;
+    }
+
+    public int getPriceConsult() {
+        return 0;
     }
 }

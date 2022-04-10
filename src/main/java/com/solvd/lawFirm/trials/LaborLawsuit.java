@@ -6,16 +6,13 @@ import com.solvd.lawFirm.laws.IMoney;
 public class LaborLawsuit extends Procedure implements ILawLabor, IMoney {
 
     public LaborLawsuit(String part1, String part2) {
-        super(part1, part2, 20000);
+        super(part1, part2, priceProcedure);
     }
 
     public String getDetailedExplanation() {
         return "IN this trial, its to resolve legal confrontations based on employer-employee relations, and the inherit conditions from contracts between those two.";
     }
 
-    public int getPriceProcedure() {
-        return 13500;
-    }
 
     public String setResolution(boolean decition) {
         if (decition == true) {
@@ -25,7 +22,7 @@ public class LaborLawsuit extends Procedure implements ILawLabor, IMoney {
         }
     }
 
-    public String getPriceConsult() {
+    public String getDetailPriceConsult() {
         return "The price of the consult is " + priceConsult + "and the cost of the trial is " + priceProcedure;
     }
 
@@ -33,4 +30,11 @@ public class LaborLawsuit extends Procedure implements ILawLabor, IMoney {
         return "We just made an Embargo over his goods, he cant sell anything and judge has at disposal $20000 to secure.";
     }
 
+    public int getPriceProcedure() {
+        return priceProcedure;
+    }
+
+    public int getPriceConsult() {
+        return priceConsult;
+    }
 }

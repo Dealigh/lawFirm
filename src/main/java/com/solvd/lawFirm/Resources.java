@@ -3,22 +3,23 @@ package com.solvd.lawFirm;
 import com.solvd.lawFirm.exceptions.AgeException;
 import com.solvd.lawFirm.exceptions.LawyerCountryException;
 import com.solvd.lawFirm.exceptions.NameException;
+import com.solvd.lawFirm.trials.IPriceProcedure;
+import com.solvd.lawFirm.laws.IRandom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Resources {
+public class Resources implements IRandom {
     private static final Logger LOGG = LogManager.getLogger(Resources.class);
     Scanner sc = new Scanner(System.in);
     Scanner Sc = new Scanner(System.in);
     private String temporalStore;
     private int ageCheck;
 
-    public <T, V> void getJudgeProsecutor(T Judge, V Prosecutor) {
-        LOGG.info("The judge will be: " + Judge);
-        LOGG.info("The prosecutor will be: " + Prosecutor);
+    public String getJudgeProsecutor(String Judge, String Prosecutor) {
+        return ("The judge will be: " + Judge + ".\n" + " The prosecutor will be: " + Prosecutor);
     }
 
     public <T> String getCourtJudge(T[]a) {
@@ -92,27 +93,27 @@ public class Resources {
     }
 
     public boolean setDecition(boolean efficient, boolean belivesInJustice) {
-        if (efficient == true && belivesInJustice == true) {
+        if (efficient && belivesInJustice) {
             return true;
-        } else if (efficient == false && belivesInJustice == false) {
+        } else if (!efficient && !belivesInJustice) {
             return false;
         } else {
             return setBoolean();
         }
     }
 
-    public String setProceedings(Integer Age, Integer priceProcedure) {
-        return Age.toString() + priceProcedure.toString();
+    public String setProceedings(Integer age, Integer priceProcedure) {
+        return age.toString() + priceProcedure.toString();
     }
 
     public String menuOptions() {
         LOGG.info("Please press the number if you are here for: ");
-        LOGG.info("1- A divorce");
+        LOGG.debug("1- A divorce");
         LOGG.info("2- A Labor Lawsuit");
-        LOGG.info("3- A Problem with Neighbours");
-        LOGG.info("4- A Trade");
-        LOGG.info("5- A Criminal Offence");
-        LOGG.info("6- Get Information");
+        LOGG.warn("3- A Problem with Neighbours");
+        LOGG.error("4- A Trade");
+        LOGG.fatal("5- A Criminal Offence");
+        LOGG.debug("6- Get Information");
         return "";
     }
 
@@ -122,6 +123,17 @@ public class Resources {
             } else if(!countryName.equals(countryLawyerNme)) {
                 throw new LawyerCountryException();
             }
+    }
+
+    public int getSumPrices(int x, int y){
+        IPriceProcedure op = (n1 , n2) -> n1 + n2;
+        return op.sumPrice(x, y);
+    }
+
+
+    @Override
+    public int random() {
+        IRandom randomNumber = (int) (Math.random() * 100);
     }
 }
 

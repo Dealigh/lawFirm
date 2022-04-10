@@ -36,7 +36,11 @@ public class Trade extends Procedure implements ILawCivil, IMoney {
         return "This Person has money and goods at disposal: ";
     }
 
-    public String getPriceConsult() {
+    public String getDetailPriceConsult() {
         return "The price of the consult is " + priceConsult + "and the cost of the trial is " + priceProcedure;
+    }
+
+    public int getPriceConsult() {
+        return priceConsult;
     }
 }
