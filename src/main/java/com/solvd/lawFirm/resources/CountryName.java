@@ -1,4 +1,4 @@
-package com.solvd.lawFirm;
+package com.solvd.lawFirm.resources;
 
 public enum CountryName {
     ARGENTINA,

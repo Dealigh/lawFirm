@@ -1,4 +1,4 @@
-package com.solvd.lawFirm;
+package com.solvd.lawFirm.resources;
 
 import com.solvd.lawFirm.exceptions.DateException;
 
@@ -61,8 +61,7 @@ public class Time {
     public static Date stringToDate(String date) throws DateException {
 
         try {
-            Date userDate = sdf2.parse(date);
-            return userDate;
+            return sdf2.parse(date);
         } catch (Exception e) {
             throw new DateException(e.getMessage());
         }

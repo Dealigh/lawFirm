@@ -1,6 +1,6 @@
 package com.solvd.lawFirm.person;
 
-import com.solvd.lawFirm.Consult;
+import com.solvd.lawFirm.resources.Consult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

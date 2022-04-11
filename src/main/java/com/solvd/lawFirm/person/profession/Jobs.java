@@ -1,4 +1,4 @@
-package com.solvd.lawFirm.profession;
+package com.solvd.lawFirm.person.profession;
 
 public enum Jobs {
     MEDIC(9),

@@ -1,17 +1,18 @@
-package com.solvd.lawFirm;
+package com.solvd.lawFirm.resources;
 
 import com.solvd.lawFirm.exceptions.AgeException;
 import com.solvd.lawFirm.exceptions.LawyerCountryException;
 import com.solvd.lawFirm.exceptions.NameException;
-import com.solvd.lawFirm.profession.Jobs;
 import com.solvd.lawFirm.trials.IPriceProcedure;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Random;
+import java.util.function.Supplier;
 
-public class Resources{
+public class Resources {
     private static final Logger LOGG = LogManager.getLogger(Resources.class);
     Scanner sc = new Scanner(System.in);
     Scanner Sc = new Scanner(System.in);
@@ -22,11 +23,11 @@ public class Resources{
         return ("The judge will be: " + Judge + ".\n" + " The prosecutor will be: " + Prosecutor);
     }
 
-    public <T> String getCourtJudge(T[]a) {
+    public <T> String getCourtJudge(T[] a) {
         return "This court has " + a.length + " judges";
     }
 
-    public int readInt()throws AgeException{
+    public int readInt() throws AgeException {
         try {
             ageCheck = sc.nextInt();
             checkAge(ageCheck);
@@ -40,7 +41,7 @@ public class Resources{
     }
 
     static void checkAge(int age) throws AgeException {
-        if(age<18) {
+        if (age < 18) {
             throw new AgeException("\n" + "You must be 18+ to start a trial");
         }
     }
@@ -51,29 +52,29 @@ public class Resources{
         return temporalStore;
     }
 
-    public void checkName() throws NameException{
-
+    public void checkName() throws NameException {
         if (!temporalStore.matches("^[a-zA-Z]+$")) {
             throw new NameException("Name not valid. Non-alphabetic characters and numbers NOT allowed" + temporalStore);
         }
-
     }
+
     public String setJudgeName() {
-        if ((int) (Math.random() * 100) >= 90) {
+        ageCheck = (int) (Math.random() * 100);
+        if (ageCheck >= 90) {
             return "Carlos Fernandez";
-        } else if ((int) (Math.random() * 100) >= 80) {
+        } else if (ageCheck >= 80) {
             return "William Lahbs";
-        } else if ((int) (Math.random() * 100) >= 70) {
+        } else if (ageCheck >= 70) {
             return "Oliver Queen";
-        } else if ((int) (Math.random() * 100) >= 60) {
+        } else if (ageCheck >= 60) {
             return "Edward Folly";
-        } else if ((int) (Math.random() * 100) >= 50) {
+        } else if (ageCheck >= 50) {
             return "Joe Schultz";
-        } else if ((int) (Math.random() * 100) >= 40) {
+        } else if (ageCheck >= 40) {
             return "Mike Kennedy";
-        } else if ((int) (Math.random() * 100) >= 30) {
+        } else if (ageCheck >= 30) {
             return "Sonia Vera";
-        } else if ((int) (Math.random() * 100) >= 20) {
+        } else if (ageCheck >= 20) {
             return "Carl Pismeni";
         } else {
             return "Olga Frank";
@@ -85,11 +86,8 @@ public class Resources{
     }
 
     public boolean setBoolean() {
-        if ((int) (Math.random() * 100) >= 50) {
-            return true;
-        } else {
-            return false;
-        }
+        Random rd = new Random();
+        return rd.nextBoolean();
     }
 
     public boolean setDecition(boolean efficient, boolean belivesInJustice) {
@@ -109,24 +107,23 @@ public class Resources{
     public String menuOptions() {
         Menu[] options = Menu.values();
         LOGG.info("Please press the number if you are here for: ");
-        for (Menu o: options) {
-            LOGG.info((o.ordinal()+ 1) + ") "+ o.name().toUpperCase().replace("_", " "));
+        for (Menu o : options) {
+            LOGG.info((o.ordinal() + 1) + ") " + o.name().toUpperCase().replace("_", " "));
         }
         return "";
     }
 
     public static void getCountryTrial(String countryName, String countryLawyerNme) throws LawyerCountryException {
-            if(countryName.equals("The Hague")){
-                return;
-            } else if(!countryName.equals(countryLawyerNme)) {
-                throw new LawyerCountryException();
-            }
+        if (countryName.equals("The Hague")) {
+            return;
+        } else if (!countryName.equals(countryLawyerNme)) {
+            throw new LawyerCountryException();
+        }
     }
 
-    public int getSumPrices(int x, int y){
-        IPriceProcedure op = (n1 , n2) -> n1 + n2;
+    public int getSumPrices(int x, int y) {
+        IPriceProcedure op = (n1, n2) -> n1 + n2;
         return op.sumPrice(x, y);
     }
 
 }
-

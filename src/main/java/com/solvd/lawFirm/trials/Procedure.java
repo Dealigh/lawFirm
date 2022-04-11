@@ -22,6 +22,14 @@ public abstract class Procedure {
 	public abstract String getDetailedExplanation();
 
 	public String getJudge() {return "The name of the judge is: ";}
-	
+
 	public abstract String setResolution(boolean Decition);
+
+	public String getPart1() {
+		return part1;
+	}
+
+	public String getPart2() {
+		return part2;
+	}
 }

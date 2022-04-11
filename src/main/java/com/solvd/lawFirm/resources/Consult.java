@@ -1,4 +1,4 @@
-package com.solvd.lawFirm;
+package com.solvd.lawFirm.resources;
 
 import java.util.*;
 
@@ -6,15 +6,14 @@ import java.util.*;
 import com.solvd.lawFirm.exceptions.*;
 import com.solvd.lawFirm.person.*;
 import com.solvd.lawFirm.trials.*;
-import com.solvd.lawFirm.profession.*;
-import com.solvd.lawFirm.information.*;
+import com.solvd.lawFirm.person.profession.Profession;
 import org.apache.commons.lang3.StringUtils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static com.solvd.lawFirm.Resources.getCountryTrial;
-import static com.solvd.lawFirm.Time.*;
+import static com.solvd.lawFirm.resources.Resources.getCountryTrial;
+import static com.solvd.lawFirm.resources.Time.*;
 
 public class Consult {
     private static final Logger LOGGER = LogManager.getLogger(Consult.class);
@@ -34,6 +33,7 @@ public class Consult {
         client.setName(StringUtils.SPACE + res.setPartName());
         Part<Client> you = new Part<>(client);
 
+
         LOGGER.info("In which country do you live in?");
         Country country = new Country("note yet", 0, false);
         String temporalSave = country.getCountriesAvailable().replace("_", " ");
@@ -52,7 +52,8 @@ public class Consult {
             secondPart.setCountryOfResidence(Sc.nextLine());
             country = (Country) country.setCourtCountry(StringUtils.deleteWhitespace(secondPart.getCountryOfResidence().toUpperCase()), StringUtils.deleteWhitespace(country.getName().toUpperCase()));
             LOGGER.info("Which one its his job. Select between the following");
-            Profession jobs = new Profession();
+            Profession<CommonPeople> accusedJob = new Profession<>(secondPart);
+            LOGGER.info("This is his salary: $" + accusedJob.getSalary() + ". Good, this will be useful later.");
         }
 
         Set<CommonPeople> newAccused = new HashSet<>();
@@ -85,35 +86,39 @@ public class Consult {
 
         switch (sc.nextInt()) {
             case 1:
-                Divorce trial = new Divorce(client.getName(), secondPart.getName());
+                Divorce divorceTrial = new Divorce(client.getName(), secondPart.getName());
+                Trial<Divorce> trial = new Trial<>(divorceTrial);
                 evolvingDate = 20;
+                LOGGER.info(trial.toString());
                 LOGGER.info(getMoreDays(evolvingDate));
-                LOGGER.info(trial.getDetailedExplanation());
-                LOGGER.info(trial.timeDescription() + trial.getDivorceTimeSpent());
-                LOGGER.info("The number of your proceedings will be: " + res.setProceedings(designedJudge.getAge(), trial.getPriceProcedure()));
+                LOGGER.info(divorceTrial.getDetailedExplanation());
+                LOGGER.info(divorceTrial.timeDescription() + divorceTrial.getDivorceTimeSpent());
+                LOGGER.info("The number of your proceedings will be: " + res.setProceedings(designedJudge.getAge(), divorceTrial.getPriceProcedure()));
 
                 LOGGER.info("Since when you two are married? Please introduce a date in format dd/MM/yyyy");
                 stringToDate(Sc.nextLine());
 
-                LOGGER.info(trial.getJudge() + designedJudge.getName());
+                LOGGER.info(divorceTrial.getJudge() + designedJudge.getName());
 
-                LOGGER.info(trial.getDetailPriceConsult());
-                client.setMoneyOwned(res.getSumPrices(trial.getPriceConsult(), trial.getPriceProcedure()));
+                LOGGER.info(divorceTrial.getDetailPriceConsult());
+                client.setMoneyOwned(res.getSumPrices(divorceTrial.getPriceConsult(), divorceTrial.getPriceProcedure()));
                 LOGGER.info(client.getMoneyOwned());
 
                 finalResolution = res.setDecition(designedJudge.getEfficient(), designedJudge.getJustice());
 
-                evolvingDate += trial.getDivorceTimeSpent();
+                evolvingDate += divorceTrial.getDivorceTimeSpent();
                 LOGGER.debug(getMoreDays(evolvingDate));
 
-                LOGGER.debug(trial.setResolution(finalResolution));
-                LOGGER.info(trial.getDivideItems());
+                LOGGER.debug(divorceTrial.setResolution(finalResolution));
+                LOGGER.info(divorceTrial.getDivideItems());
                 break;
             case 2:
                 LaborLawsuit laborTrial = new LaborLawsuit(client.getName(), secondPart.getName());
                 LOGGER.info(laborTrial.getDetailedExplanation());
                 LOGGER.info("The number of your proceedings will be: " + designedJudge.hashCode());
-
+                Trial<LaborLawsuit> trial1 = new Trial<>(laborTrial);
+                evolvingDate = 20;
+                LOGGER.info(trial1.toString());
 
                 LOGGER.info(laborTrial.getJudge() + designedJudge.getName());
 
@@ -169,6 +174,7 @@ public class Consult {
                 break;
             case 5:
                 Criminal criminal = new Criminal(client.getName(), secondPart.getName());
+                Part<CommonPeople> accused = new Part<>(secondPart);
                 LOGGER.info(criminal.getDetailedExplanation());
                 LOGGER.info("The number of your proceedings will be: " + designedJudge.hashCode());
                 LOGGER.info("Do you want to accuse more people?");
@@ -189,6 +195,7 @@ public class Consult {
                 }
 
                 finalResolution = res.setDecition(designedJudge.getEfficient(), designedJudge.getJustice());
+                accused.setEficient(finalResolution);
                 LOGGER.debug(criminal.setResolution(finalResolution));
                 break;
 
@@ -222,6 +229,7 @@ public class Consult {
             listNewJudges.trimToSize();
 
             listNewJudges.forEach((n)->LOGGER.info("We got the Judge: " + n.getName()));
+            listNewJudges.sort(Comparator.comparing(Person::getName));
             LOGGER.info(res.getCourtJudge(listNewJudges.toArray()));
 
             LOGGER.info("They are taking a look into this Trial...");

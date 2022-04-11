@@ -1,15 +1,15 @@
 package com.solvd.lawFirm.person;
 
-abstract class Person {
+public abstract class Person {
 
 	private int age;
 	private String name;
-	private boolean efficent;
+	private boolean eficent;
 
 	public Person(String name, int edad, boolean efficient) {
 		this.name = name;
 		this.age = edad;
-		this.efficent = efficient;
+		this.eficent = efficient;
 	}
 
 	public void setAge(int age){
@@ -26,11 +26,15 @@ abstract class Person {
 	}
 
 	public boolean getEfficient() {
-		return this.efficent;
+		return this.eficent;
 	}
 
 	public void setName(String name) {this.name += name;}
 
 	public String getRole(){ return "";};
+
+	public void setEficient() {
+		this.eficent = false;
+	}
 
 }

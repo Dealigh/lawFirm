@@ -1,20 +1,23 @@
-package com.solvd.lawFirm.profession;
+package com.solvd.lawFirm.person.profession;
 
-import com.solvd.lawFirm.Consult;
+import com.solvd.lawFirm.resources.Consult;
+import com.solvd.lawFirm.person.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
-public class Profession {
+public class Profession<T extends Person> {
     Scanner sc = new Scanner(System.in);
     private static final Logger LOGGER = LogManager.getLogger(Consult.class);
 
+    private T referencePerson;
     private double salary;
     private String profession;
     private String election;
 
-    public Profession() {
+    public Profession(T person) {
+        this.referencePerson = person;
         this.profession = setProfession();
         this.salary = setSalary();
     }
@@ -35,7 +38,7 @@ public class Profession {
 
     private String setProfession() {
         Jobs[] jobs = Jobs.values();
-        LOGGER.info("Please chose a profession, it can be: ");
+        LOGGER.info("It can be: ");
         for (Jobs j: jobs) {
             LOGGER.info((j.ordinal()+ 1) + ") "+ j.name().toUpperCase());
         }

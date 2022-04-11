@@ -1,7 +1,7 @@
 package com.solvd.lawFirm.person;
 
-import com.solvd.lawFirm.Consult;
-import com.solvd.lawFirm.CountryName;
+import com.solvd.lawFirm.resources.Consult;
+import com.solvd.lawFirm.resources.CountryName;
 import com.solvd.lawFirm.exceptions.NameException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
