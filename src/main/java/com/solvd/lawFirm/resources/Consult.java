@@ -202,7 +202,7 @@ public class Consult {
             case 6:
                 LOGGER.info("Do you want to know more about the accused. Put yes, if you don't write that or you write anything else we will tell" +
                         "you about the Judge. We could also say what we know about you");
-                if(Sc.nextLine().equalsIgnoreCase("yes")) {
+                if (Sc.nextLine().equalsIgnoreCase("yes")) {
                     LOGGER.info("You want to get more information about" + secondPart.getName() + "Here's what we know so far:");
                     Part<CommonPeople> him = new Part<>(secondPart);
                     LOGGER.info(him.toString());
@@ -228,7 +228,7 @@ public class Consult {
             }
             listNewJudges.trimToSize();
 
-            listNewJudges.forEach((n)->LOGGER.info("We got the Judge: " + n.getName()));
+            listNewJudges.forEach((n) -> LOGGER.info("We got the Judge: " + n.getName()));
             listNewJudges.sort(Comparator.comparing(Person::getName));
             LOGGER.info(res.getCourtJudge(listNewJudges.toArray()));
 

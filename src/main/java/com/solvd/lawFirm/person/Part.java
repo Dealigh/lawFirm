@@ -1,14 +1,12 @@
 package com.solvd.lawFirm.person;
 
-import java.util.ArrayList;
-
 public class Part<T extends Person> {
 
-        T part;
+    T part;
 
-        public Part(T part) {
-            this.part = part;
-        }
+    public Part(T part) {
+        this.part = part;
+    }
 
     @Override
     public String toString() {
@@ -17,7 +15,9 @@ public class Part<T extends Person> {
     }
 
     public void setEficient(boolean inJail) {
-            if(inJail) { part.setEficient();}
+        if (inJail) {
+            part.setEficient();
+        }
     }
 }
 
