@@ -6,6 +6,8 @@ public enum Jobs {
     COP(4),
     CHEF(4);
 
+    private int unitSalary;
+
     private Jobs(int unitSalary) {
         this.unitSalary = unitSalary;
     }
@@ -13,6 +15,4 @@ public enum Jobs {
     public int getUnitSalary() {
         return unitSalary;
     }
-
-    private int unitSalary;
 }
