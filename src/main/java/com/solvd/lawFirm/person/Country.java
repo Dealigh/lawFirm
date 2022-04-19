@@ -26,7 +26,7 @@ public class Country extends Person {
         CountryName[] countries = CountryName.values();
         LOGGER.info("Chose a country, if it doesn't appear on the list chose other");
         for (CountryName c: countries) {
-            LOGGER.info((c.ordinal()+ 1) + ") "+ c.name().toUpperCase());
+            LOGGER.info((c.ordinal()+ 1) + ") "+ c.getCountryName().toUpperCase());
         }
         return countries[(sc.nextInt() - 1)].toString();
     }

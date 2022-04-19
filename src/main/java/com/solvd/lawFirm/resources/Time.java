@@ -34,31 +34,31 @@ public class Time {
         switch(daySt) {
             case 1:
                 DaysOfWeek day = DaysOfWeek.SUNDAY;
-                return day.toString();
+                return day.getDayName();
             case 2:
                 DaysOfWeek day1 = DaysOfWeek.MONDAY;
-                return day1.toString();
+                return day1.getDayName();
             case 3:
                 DaysOfWeek day2 = DaysOfWeek.TUESDAY;
-                return day2.toString();
+                return day2.getDayName();
             case 4:
                 DaysOfWeek day3 = DaysOfWeek.WEDNESDAY;
-                return day3.toString();
+                return day3.getDayName();
             case 5:
                 DaysOfWeek day4 = DaysOfWeek.THURSDAY;
-                return day4.toString();
+                return day4.getDayName();
             case 6:
                 DaysOfWeek day5 = DaysOfWeek.FRIDAY;
-                return day5.toString();
+                return day5.getDayName();
             case 7:
                 DaysOfWeek day6 = DaysOfWeek.SATURDAY;
-                return day6.toString();
+                return day6.getDayName();
             default:
                 return "";
         }
     }
 
-    public static Date stringToDate(String date) throws DateException {
+    public static Date stringToDate(String date) {
 
         try {
             return sdf2.parse(date);

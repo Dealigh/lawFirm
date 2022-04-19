@@ -27,7 +27,7 @@ public class Resources {
         return "This court has " + a.length + " judges";
     }
 
-    public int readInt() throws AgeException {
+    public int readInt() {
         try {
             ageCheck = sc.nextInt();
             checkAge(ageCheck);
@@ -40,19 +40,19 @@ public class Resources {
         return ageCheck;
     }
 
-    static void checkAge(int age) throws AgeException {
+    static void checkAge(int age) {
         if (age < 18) {
             throw new AgeException("\n" + "You must be 18+ to start a trial");
         }
     }
 
-    public String setPartName() throws NameException {
+    public String setPartName() {
         temporalStore = Sc.nextLine().toUpperCase();
         checkName();
         return temporalStore;
     }
 
-    public void checkName() throws NameException {
+    public void checkName() {
         if (!temporalStore.matches("^[a-zA-Z]+$")) {
             throw new NameException("Name not valid. Non-alphabetic characters and numbers NOT allowed" + temporalStore);
         }
@@ -113,7 +113,7 @@ public class Resources {
         return "";
     }
 
-    public static void getCountryTrial(String countryName, String countryLawyerNme) throws LawyerCountryException {
+    public static void getCountryTrial(String countryName, String countryLawyerNme) {
         if (countryName.equals("The Hague")) {
             return;
         } else if (!countryName.equals(countryLawyerNme)) {
