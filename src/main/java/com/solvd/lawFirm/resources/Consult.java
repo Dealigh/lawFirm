@@ -27,6 +27,9 @@ public class Consult {
         Scanner sc = new Scanner(System.in);
         Scanner Sc = new Scanner(System.in);
 
+        Reflection reflection = new Reflection();
+        LOGGER.info(reflection.getRecursionResult());
+
         LOGGER.info("Welcome to Goldbach lawsuit, please insert your name");
         Client client = new Client(res.setPartName());
         LOGGER.info("Now tell me your Lastname");
@@ -81,7 +84,9 @@ public class Consult {
 
         int evolvingDate = 10;
         LOGGER.info(getMoreDays(evolvingDate));
+
         Judge designedJudge = new Judge(res.setJudgeName(), res.setJudgeAge(), res.setBoolean(), res.setBoolean());
+
         res.menuOptions();
 
         switch (sc.nextInt()) {
@@ -166,9 +171,11 @@ public class Consult {
                 }
 
                 LOGGER.info(secondPart.getName() + ", ");
-                for (CommonPeople C : newAccused) {
-                    LOGGER.info(C.getName() + ", ");
-                }
+                newAccused
+                        .stream()
+                        .forEach(accused -> {
+                            LOGGER.info(accused.getName() + ", ");
+                        });
                 finalResolution = res.setDecition(designedJudge.getEfficient(), designedJudge.getJustice());
                 LOGGER.debug(trade.setResolution(finalResolution));
                 break;
@@ -187,13 +194,11 @@ public class Consult {
                 LOGGER.info(secondPart.getName() + criminal.setBehindBars());
                 LOGGER.info(criminal.setProof());
                 LOGGER.info(secondPart.getName() + ", ");
-
-                CommonPeople arrayPeople[] = new CommonPeople[newAccused.size()];
-                newAccused.toArray(arrayPeople);
-                for (CommonPeople arrayPerson : arrayPeople) {
-                    LOGGER.info(arrayPerson.getName() + ", ");
-                }
-
+                newAccused
+                        .stream()
+                        .forEach(nextAccused -> {
+                            LOGGER.info(nextAccused.getName() + ", ");
+                        });
                 finalResolution = res.setDecition(designedJudge.getEfficient(), designedJudge.getJustice());
                 accused.setEficient(finalResolution);
                 LOGGER.debug(criminal.setResolution(finalResolution));
@@ -223,12 +228,13 @@ public class Consult {
             LOGGER.info("We can try to appeal this Trial to an upper court, which can see if the final resolution was fair or not");
             LOGGER.info("Electing new Judges...");
             ArrayList<Judge> listNewJudges = new ArrayList<>();
-            for (int i = 0; i < ((int) (Math.random() * 5) + 2); i++) {
-                listNewJudges.add(new Judge(res.setJudgeName(), res.setJudgeAge(), res.setBoolean(), res.setBoolean()));
-            }
+            listNewJudges.add(new Judge(res.setJudgeName(), res.setJudgeAge(), res.setBoolean(), res.setBoolean()));
+            listNewJudges.add(new Judge(res.setJudgeName(), res.setJudgeAge(), res.setBoolean(), res.setBoolean()));
+            listNewJudges.add(new Judge(res.setJudgeName(), res.setJudgeAge(), res.setBoolean(), res.setBoolean()));
             listNewJudges.trimToSize();
 
             listNewJudges.forEach((n) -> LOGGER.info("We got the Judge: " + n.getName()));
+
             listNewJudges.sort(Comparator.comparing(Person::getName));
             LOGGER.info(res.getCourtJudge(listNewJudges.toArray()));
 

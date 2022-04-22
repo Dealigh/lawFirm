@@ -31,7 +31,7 @@ public class Country extends Person {
         return countries[(sc.nextInt() - 1)].toString();
     }
 
-    public Country getCountry(String countryName) throws NameException {
+    public Country getCountry(String countryName){
         Country argentina = new Country("Argentina", 212, false);
         Country belarus = new Country("Belarus", 31, true);
         Country unitedStates = new Country("United States", 241, true);

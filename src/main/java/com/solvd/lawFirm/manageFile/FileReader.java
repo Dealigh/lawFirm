@@ -1,57 +1,51 @@
 package com.solvd.lawFirm.manageFile;
 
-import com.solvd.lawFirm.person.Judge;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.sql.SQLOutput;
 import java.util.*;
+import java.util.stream.Collectors;
 
-public class fileReader {
+public class FileReader {
 
-    public static void main(String[] args) throws IOException {
+    public static void mainSecond(String[] args) throws IOException {
         int counter = 0, maxCounter = 0;
 
         String comparator = "", secondaryComparator = "";
         String[] wordChecker = new String[5];
 
         File sourceFile = new File("src/main/resources/climateChange.txt");
-        FileWriter writer = new FileWriter("src/main/resources/newFile.txt");
+        File writer = new File("src/main/resources/newFile.txt");
 
-        String fileString = FileUtils.readFileToString(sourceFile);
+        String fileString = FileUtils.readFileToString(sourceFile, "UTF-8").toUpperCase();
+
+        fileString = fileString.replace(".", "");
+        fileString = fileString.replace(",", "");
+        fileString = fileString.replaceAll("[<>\\[\\],.-]", "");
+
         String[] arrayWord = StringUtils.split(StringUtils.join(fileString), " ");
-        List<String> words = Arrays.asList(arrayWord);
 
-        for (String s : words) {
-            if (s.length() <= 4) {
+        Set<String> theWords = Arrays.stream(arrayWord).collect(Collectors.toSet());
+
+        for (String s : arrayWord) {
+            if (s.length() <= 3) {
                 s = StringUtils.remove(s, s);
             }
-
             counter = StringUtils.countMatches(Arrays.toString(arrayWord), s);
             if (counter > maxCounter) {
                 maxCounter = counter;
             }
-
         }
-
         while (maxCounter != 0) {
-
-            for (String s : words) {
+            for (String s : theWords) {
                 counter = StringUtils.countMatches(Arrays.toString(arrayWord), s);
-
-                if (!StringUtils.isAlphanumeric(s)) {
-                    s = s.replaceAll("[<>\\[\\],.-]", "");
-                }
-                if (maxCounter == counter && !(comparator.equals(s)) && !(secondaryComparator.equals(s))) {
-                    writer.write(s + " - " + counter + "\n");
-                    secondaryComparator = comparator;
-                    comparator = s;
+                if (maxCounter == counter) {
+                    FileUtils.write(writer, s + " - " + counter + "\n", (String) null, true);
                 }
             }
             maxCounter--;
         }
-
     }
-
 }

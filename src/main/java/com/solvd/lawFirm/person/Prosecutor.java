@@ -1,7 +1,6 @@
 package com.solvd.lawFirm.person;
 
 public class Prosecutor extends Person {
-    private boolean belivesinJustice = true;
 
     public Prosecutor(String nombre, int edad, boolean efficent) {
         super(nombre, edad, efficent);

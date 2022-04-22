@@ -25,10 +25,6 @@ public class Profession<T extends Person> {
         return salary;
     }
 
-    public String getProfession() {
-        return profession;
-    }
-
     private double setSalaryLambda(Integer x) {
         ISalary getSalary = (s) -> 512.25 * s;
         this.salary = getSalary.declareSalary(x);

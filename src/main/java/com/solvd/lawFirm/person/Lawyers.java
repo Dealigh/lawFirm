@@ -49,4 +49,5 @@ public class Lawyers extends Person {
 		return this.countryLawyer;
 	}
 
+
 }

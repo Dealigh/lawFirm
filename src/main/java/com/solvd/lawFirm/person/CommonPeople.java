@@ -6,7 +6,6 @@ public class CommonPeople extends Person {
 
     public CommonPeople(String name) {
         super(name, 25, false);
-
     }
 
     public String getProfession() {
