@@ -13,9 +13,6 @@ public class FileReader {
     public static void mainSecond(String[] args) throws IOException {
         int counter = 0, maxCounter = 0;
 
-        String comparator = "", secondaryComparator = "";
-        String[] wordChecker = new String[5];
-
         File sourceFile = new File("src/main/resources/climateChange.txt");
         File writer = new File("src/main/resources/newFile.txt");
 
