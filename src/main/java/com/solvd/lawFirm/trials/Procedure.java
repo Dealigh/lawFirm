@@ -23,7 +23,7 @@ public abstract class Procedure {
 
 	public String getJudge() {return "The name of the judge is: ";}
 
-	public abstract String setResolution(boolean Decition);
+	public abstract String setResolution(boolean decition);
 
 	public String getPart1() {
 		return part1;

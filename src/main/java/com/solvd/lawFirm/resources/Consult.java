@@ -200,7 +200,7 @@ public class Consult {
                             LOGGER.info(nextAccused.getName() + ", ");
                         });
                 finalResolution = res.setDecition(designedJudge.getEfficient(), designedJudge.getJustice());
-                accused.setEficient(finalResolution);
+                accused.setEfficient(finalResolution);
                 LOGGER.debug(criminal.setResolution(finalResolution));
                 break;
 
