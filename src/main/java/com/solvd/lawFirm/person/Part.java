@@ -2,7 +2,7 @@ package com.solvd.lawFirm.person;
 
 public class Part<T extends Person> {
 
-    T part;
+    private T part;
 
     public Part(T part) {
         this.part = part;

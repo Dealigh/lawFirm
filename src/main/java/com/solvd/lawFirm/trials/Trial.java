@@ -2,7 +2,7 @@ package com.solvd.lawFirm.trials;
 
 public class Trial<T extends Procedure> {
 
-    T trial;
+    private T trial;
 
     public Trial(T trial) {
         this.trial = trial;
